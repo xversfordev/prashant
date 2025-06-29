@@ -39,14 +39,22 @@ const Navigation = ({ currentPage, setCurrentPage }: NavigationProps) => {
   const separatorOpacity = Math.max(0.1, 0.5 - (scrollProgress * 0.4)) // More gradual fade
   const separatorHeight = 1.5 - (scrollProgress * 0.25) // 1.5rem to 1.25rem (reduced from 2rem to 1.5rem)
 
+  // Mobile detection
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
   useEffect(() => {
     const updatePosition = () => {
       const activeItem = itemRefs.current[currentPage]
       if (activeItem && navRef.current) {
         const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize)
         const leftPaddingPx = paddingX * rootFontSize
-        const x = activeItem.offsetLeft - leftPaddingPx
-        const width = activeItem.offsetWidth
+        let x = activeItem.offsetLeft - leftPaddingPx
+        let width = activeItem.offsetWidth
+        // On mobile, no left padding, use flex layout
+        if (isMobile) {
+          x = activeItem.offsetLeft - navRef.current.offsetLeft
+          width = activeItem.offsetWidth
+        }
         setActiveItemRect({ x, width })
       }
     }
@@ -67,7 +75,7 @@ const Navigation = ({ currentPage, setCurrentPage }: NavigationProps) => {
         nav.removeEventListener('transitionend', updatePosition)
       }
     }
-  }, [currentPage, scrollProgress, paddingX])
+  }, [currentPage, scrollProgress, paddingX, isMobile])
 
   useEffect(() => {
     const handleResize = () => {
@@ -262,7 +270,7 @@ const Navigation = ({ currentPage, setCurrentPage }: NavigationProps) => {
               <motion.button
                 ref={(el) => itemRefs.current[item.id] = el}
                 onClick={() => handleNavClick(item)}
-                className={`nav-item ${isActive ? 'active' : ''} ${item.glow} flex-shrink-0 flex items-center space-x-2 relative z-10`}
+                className={`nav-item ${isActive ? 'active' : ''} ${item.glow} flex-shrink-0 flex items-center space-x-1 sm:space-x-2 relative z-10`}
                 whileHover={{ 
                   scale: 1.03
                 }}
@@ -291,7 +299,7 @@ const Navigation = ({ currentPage, setCurrentPage }: NavigationProps) => {
                 
                 {/* Page Title */}
                 <motion.span
-                  className={`font-light text-sm sm:text-base transition-all duration-300 ${
+                  className={`font-light text-sm sm:text-base transition-all duration-300 hidden sm:inline ${
                     isActive 
                       ? currentPage === 'buy-me-coffee' ? 'text-gray-900' : 'text-white'
                       : currentPage === 'buy-me-coffee' ? 'text-gray-400' : 'text-white/95 group-hover:text-white'
@@ -318,7 +326,7 @@ const Navigation = ({ currentPage, setCurrentPage }: NavigationProps) => {
               {/* Separator line between Contact and Coffee */}
               {item.id === 'contact' && (
                 <motion.div
-                  className="w-px bg-white/20 ml-1 sm:ml-2"
+                  className="w-px bg-white/20 ml-1 sm:ml-2 hidden sm:block"
                   style={{
                     opacity: separatorOpacity,
                     height: `${separatorHeight}rem`

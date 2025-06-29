@@ -275,7 +275,7 @@
   background: linear-gradient(
     135deg,
     rgba(255, 255, 255, 0.4) 0%,
-    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.1) 50%,
     transparent 100%
   );
 }
@@ -299,29 +299,220 @@
 }
 
 .glass-surface {
-  background: 
-    radial-gradient(
-      circle at 30% 30%,
-      rgba(255, 255, 255, 0.05) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 70% 70%,
-      rgba(255, 255, 255, 0.03) 0%,
-      transparent 50%
-    );
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 255, 255, 0.05) 0%,
+    transparent 50%
+  );
 }
 
 .glass-surface-coffee {
-  background: 
-    radial-gradient(
-      circle at 30% 30%,
-      rgba(255, 255, 255, 0.1) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 70% 70%,
-      rgba(255, 255, 255, 0.05) 0%,
-      transparent 50%
-    );
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 50%
+  );
+}
+
+/* Mobile-only optimizations - Desktop view remains unchanged */
+@media (max-width: 768px) {
+  .floating-nav {
+    bottom: 0.5rem;
+    left: 0.5rem;
+    right: 0.5rem;
+    padding: 0.25rem 0.25rem !important;
+    border-radius: 1.25rem !important;
+    min-height: 56px;
+    max-width: none;
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+  }
+  .glass-card {
+    padding: 0.25rem !important;
+    border-radius: 1.25rem !important;
+  }
+  .glass-slider, .glass-slider-coffee {
+    min-height: 40px !important;
+    height: 40px !important;
+    top: 4px !important;
+    border-radius: 1.25rem !important;
+    background-clip: padding-box;
+    /* JS now handles left/width, so no left/width/margin-left hacks here */
+  }
+  .nav-item {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0.25rem !important;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex: 1 1 0%;
+    max-width: 100%;
+  }
+  .nav-item .lucide {
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+    margin: 0 auto !important;
+    display: block;
+  }
+  .nav-item .group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  /* Compact navigation for mobile */
+  .floating-nav {
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    transform: none;
+    width: auto;
+    max-width: none;
+  }
+  
+  /* Better touch targets for mobile */
+  .nav-item {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0.5rem;
+  }
+  
+  /* Reduce glass card blur on mobile for better performance */
+  .glass-card {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  
+  /* Mobile-specific spacing */
+  .glass-card {
+    margin: 0 1rem;
+  }
+  
+  /* Optimize text sizes for mobile readability */
+  h1 {
+    font-size: 2rem !important;
+    line-height: 1.2 !important;
+  }
+  
+  h2 {
+    font-size: 1.5rem !important;
+    line-height: 1.3 !important;
+  }
+  
+  p {
+    font-size: 0.875rem !important;
+    line-height: 1.6 !important;
+  }
+  
+  /* Better button sizing for mobile */
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Optimize grid layouts for mobile */
+  .grid {
+    gap: 1rem !important;
+  }
+  
+  /* Reduce padding on mobile */
+  .p-10 {
+    padding: 1.5rem !important;
+  }
+  
+  .p-6 {
+    padding: 1rem !important;
+  }
+  
+  /* Better margin handling on mobile */
+  .mb-20 {
+    margin-bottom: 3rem !important;
+  }
+  
+  .mb-12 {
+    margin-bottom: 2rem !important;
+  }
+  
+  /* Mobile-specific icon sizes */
+  .w-24.h-24 {
+    width: 4rem !important;
+    height: 4rem !important;
+  }
+  
+  .w-12.h-12 {
+    width: 2rem !important;
+    height: 2rem !important;
+  }
+  
+  .w-8.h-8 {
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+  }
+  
+  .w-6.h-6 {
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+  }
+  
+  /* Mobile-specific text sizes */
+  .text-6xl {
+    font-size: 2.5rem !important;
+  }
+  
+  .text-4xl {
+    font-size: 2rem !important;
+  }
+  
+  .text-3xl {
+    font-size: 1.75rem !important;
+  }
+  
+  .text-xl {
+    font-size: 1.125rem !important;
+  }
+  
+  .text-lg {
+    font-size: 1rem !important;
+  }
+  
+  /* Mobile-specific spacing */
+  .space-y-4 > * + * {
+    margin-top: 0.75rem !important;
+  }
+  
+  .space-y-3 > * + * {
+    margin-top: 0.5rem !important;
+  }
+  
+  /* Mobile-specific padding */
+  .p-4 {
+    padding: 0.75rem !important;
+  }
+  
+  .p-3 {
+    padding: 0.5rem !important;
+  }
+  
+  /* Mobile-specific margins */
+  .mb-6 {
+    margin-bottom: 1rem !important;
+  }
+  
+  .mb-4 {
+    margin-bottom: 0.75rem !important;
+  }
+  
+  .mb-8 {
+    margin-bottom: 1.5rem !important;
+  }
+  
+  /* Mobile-specific gaps */
+  .gap-8 {
+    gap: 1rem !important;
+  }
+  
+  .gap-6 {
+    gap: 0.75rem !important;
+  }
 } 

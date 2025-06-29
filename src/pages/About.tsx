@@ -128,21 +128,21 @@ const About = ({ setCurrentPage }: AboutProps) => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-12 sm:mb-20 px-4"
         >
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="inline-block mb-6"
+            className="inline-block mb-4 sm:mb-6"
           >
-            <div className="w-24 h-24 bg-gradient-to-r from-[#14b8a6] to-[#06b6d4] rounded-full flex items-center justify-center mx-auto mb-4">
-              <Users className="w-12 h-12 text-white" />
+            <div className="w-16 h-16 sm:w-24 sm:h-24 bg-gradient-to-r from-[#14b8a6] to-[#06b6d4] rounded-full flex items-center justify-center mx-auto mb-4">
+              <Users className="w-8 h-8 sm:w-12 sm:h-12 text-white" />
             </div>
           </motion.div>
           
           <motion.h1 
-            className="text-6xl md:text-7xl font-bold mb-6"
+            className="text-4xl sm:text-6xl md:text-7xl font-bold mb-4 sm:mb-6"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.3 }}
@@ -158,7 +158,7 @@ const About = ({ setCurrentPage }: AboutProps) => {
           </motion.h1>
           
           <motion.p 
-            className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed"
+            className="text-base sm:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed px-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.9 }}
@@ -169,9 +169,9 @@ const About = ({ setCurrentPage }: AboutProps) => {
           </motion.p>
           
           <motion.div 
-            className="w-32 h-1 bg-gradient-to-r from-[#14b8a6] to-[#06b6d4] mx-auto rounded-full mt-8"
+            className="w-24 sm:w-32 h-1 bg-gradient-to-r from-[#14b8a6] to-[#06b6d4] mx-auto rounded-full mt-6 sm:mt-8"
             initial={{ width: 0, opacity: 0 }}
-            animate={{ width: "8rem", opacity: 1 }}
+            animate={{ width: "6rem", opacity: 1 }}
             transition={{ duration: 0.8, delay: 1.1 }}
           />
         </motion.div>
@@ -258,12 +258,12 @@ const About = ({ setCurrentPage }: AboutProps) => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="mb-20"
+          className="mb-12 sm:mb-20 px-4"
         >
-          <motion.div className="text-center mb-16">
+          <motion.div className="text-center mb-12 sm:mb-16">
             <motion.span
               key={currentTitleIndex}
-              className="text-4xl font-bold inline-block"
+              className="text-2xl sm:text-4xl font-bold inline-block"
               style={{
                 background: 'linear-gradient(135deg, #14b8a6 0%, #06b6d4 100%)',
                 WebkitBackgroundClip: 'text',
@@ -279,7 +279,7 @@ const About = ({ setCurrentPage }: AboutProps) => {
             </motion.span>
           </motion.div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {skills.map((skill, index) => {
               const Icon = skill.icon
               const isActive = activeSkill === skill.category
@@ -301,19 +301,19 @@ const About = ({ setCurrentPage }: AboutProps) => {
                   />
                   
                   <div className="relative z-10">
-                    <div className="flex items-center mb-6">
+                    <div className="flex items-center mb-4 sm:mb-6">
                       <motion.div 
-                        className={`p-4 rounded-full bg-gradient-to-r ${skill.color} mr-4`}
+                        className={`p-3 sm:p-4 rounded-full bg-gradient-to-r ${skill.color} mr-3 sm:mr-4`}
                         animate={isActive ? { scale: 1.1, rotate: 5 } : { scale: 1, rotate: 0 }}
                         transition={{ duration: 0.3 }}
                       >
-                        <Icon className="w-7 h-7 text-white" />
+                        <Icon className="w-5 h-5 sm:w-7 sm:h-7 text-white" />
                       </motion.div>
-                      <h3 className="text-xl font-bold text-white">{skill.category}</h3>
+                      <h3 className="text-lg sm:text-xl font-bold text-white">{skill.category}</h3>
                     </div>
                     
                     <motion.p 
-                      className="text-slate-400 mb-6 text-sm"
+                      className="text-slate-400 mb-4 sm:mb-6 text-xs sm:text-sm"
                       initial={{ opacity: 0, height: 0 }}
                       animate={isActive ? { opacity: 1, height: "auto" } : { opacity: 0, height: 0 }}
                       transition={{ duration: 0.3 }}
@@ -322,10 +322,10 @@ const About = ({ setCurrentPage }: AboutProps) => {
                     </motion.p>
                     
                     {/* Progress Bar */}
-                    <div className="mb-6">
+                    <div className="mb-4 sm:mb-6">
                       <div className="flex justify-between items-center mb-2">
-                        <span className="text-sm text-slate-400">Proficiency</span>
-                        <span className="text-sm font-semibold about-gradient">{skill.proficiency}%</span>
+                        <span className="text-xs sm:text-sm text-slate-400">Proficiency</span>
+                        <span className="text-xs sm:text-sm font-semibold about-gradient">{skill.proficiency}%</span>
                       </div>
                       <div className="w-full bg-white/10 rounded-full h-2 overflow-hidden">
                         <motion.div
@@ -337,14 +337,14 @@ const About = ({ setCurrentPage }: AboutProps) => {
                       </div>
                     </div>
                     
-                    <ul className="space-y-2">
+                    <ul className="space-y-1 sm:space-y-2">
                       {skill.skills.map((item, idx) => (
                         <motion.li
                           key={idx}
                           initial={{ opacity: 0, x: -20 }}
                           animate={isInView ? { opacity: 1, x: 0 } : {}}
                           transition={{ delay: index * 0.1 + idx * 0.05 + 0.3 }}
-                          className="flex items-center text-slate-300 text-sm"
+                          className="flex items-center text-slate-300 text-xs sm:text-sm"
                         >
                           <ChevronRight className={`w-3 h-3 mr-2 bg-gradient-to-r ${skill.color} bg-clip-text text-transparent`} />
                           {item}

@@ -83,7 +83,7 @@ const Education = ({ setCurrentPage }: EducationProps) => {
             Academic journey and continuous learning in technology
           </motion.p>
           <motion.div 
-            className="w-24 h-1 bg-gradient-to-r from-pink-500 to-orange-500 mx-auto rounded-full mt-6"
+            className="w-24 h-1 bg-gradient-to-r from-rose-500 to-pink-500 mx-auto rounded-full mt-6"
             initial={{ width: 0, opacity: 0 }}
             animate={{ width: "6rem", opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.9 }}

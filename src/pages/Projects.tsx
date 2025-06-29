@@ -135,7 +135,7 @@ const Projects = ({ setCurrentPage }: ProjectsProps) => {
             Showcasing my work in AI/ML, data engineering, and full-stack development
           </motion.p>
           <motion.div 
-            className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full mt-6"
+            className="w-24 h-1 bg-gradient-to-r from-[#085162] to-[#c6e7f9] mx-auto rounded-full mt-6"
             initial={{ width: 0, opacity: 0 }}
             animate={{ width: "6rem", opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.9 }}
@@ -161,7 +161,7 @@ const Projects = ({ setCurrentPage }: ProjectsProps) => {
                 {/* Project Header */}
                 <div className="flex items-start justify-between mb-6">
                   <div className="flex items-center">
-                    <div className={`p-3 rounded-full bg-gradient-to-r ${project.color} mr-4 group-hover:scale-110 transition-transform duration-300`}>
+                    <div className={`p-3 rounded-full bg-gradient-to-r from-[#085162] to-[#c6e7f9] mr-4 group-hover:scale-110 transition-transform duration-300`}>
                       <Icon className="w-6 h-6 text-white" />
                     </div>
                     <div>
@@ -176,7 +176,7 @@ const Projects = ({ setCurrentPage }: ProjectsProps) => {
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
-                    className="p-2 rounded-full bg-white/10 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-600 hover:text-white transition-all duration-500 ease-out"
+                    className="p-2 rounded-full bg-white/10 hover:bg-gradient-to-r hover:from-[#085162] hover:to-[#c6e7f9] hover:text-white transition-all duration-500 ease-out"
                   >
                     <Github className="w-5 h-5" />
                   </motion.a>
@@ -249,7 +249,7 @@ const Projects = ({ setCurrentPage }: ProjectsProps) => {
               onClick={handleGetInTouch}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full text-white font-medium hover:bg-gradient-to-r hover:from-blue-400 hover:to-cyan-400 hover:shadow-lg hover:shadow-blue-400/25 transition-all duration-500 ease-out"
+              className="px-8 py-3 bg-gradient-to-r from-[#085162] to-[#c6e7f9] rounded-full text-white font-medium hover:bg-gradient-to-r hover:from-[#085162] hover:to-[#c6e7f9] hover:shadow-lg hover:shadow-[#085162]/25 transition-all duration-500 ease-out"
             >
               Get In Touch
             </motion.button>

@@ -134,7 +134,7 @@ const Contact = ({ setCurrentPage }: ContactProps) => {
             Let's connect and discuss exciting opportunities
           </motion.p>
           <motion.div 
-            className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-pink-500 mx-auto rounded-full mt-6"
+            className="w-24 h-1 bg-gradient-to-r from-sky-500 to-blue-500 mx-auto rounded-full mt-6"
             initial={{ width: 0, opacity: 0 }}
             animate={{ width: "6rem", opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.9 }}

@@ -88,7 +88,7 @@ const Experience = ({ setCurrentPage }: ExperienceProps) => {
             Professional achievements and leadership roles that demonstrate my impact
           </motion.p>
           <motion.div 
-            className="w-24 h-1 bg-gradient-to-r from-green-500 to-emerald-500 mx-auto rounded-full mt-6"
+            className="w-24 h-1 bg-gradient-to-r from-teal-500 to-cyan-500 mx-auto rounded-full mt-6"
             initial={{ width: 0, opacity: 0 }}
             animate={{ width: "6rem", opacity: 1 }}
             transition={{ duration: 0.8, delay: 1.1 }}
@@ -138,7 +138,7 @@ const Experience = ({ setCurrentPage }: ExperienceProps) => {
           className="glass-card p-8 mb-16"
         >
           <div className="flex items-center mb-6">
-            <div className="p-3 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 mr-4">
+            <div className="p-3 rounded-full bg-gradient-to-r from-teal-500 to-cyan-500 mr-4">
               <Users className="w-6 h-6 text-white" />
             </div>
             <div>

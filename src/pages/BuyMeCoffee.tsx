@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Coffee, Heart, Copy, Check } from 'lucide-react'
+import { Coffee, Heart, Copy, Check, Sparkles, Gift } from 'lucide-react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import AnimatedBackground from '../components/AnimatedBackground'
@@ -38,47 +38,58 @@ const BuyMeCoffee = ({ setCurrentPage }: BuyMeCoffeeProps) => {
     <div className="min-h-screen py-20 px-6">
       <AnimatedBackground type="coffee" />
       
-      <div className="max-w-4xl mx-auto relative z-10">
+      <div className="max-w-6xl mx-auto relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <motion.h1 
-            className="text-5xl md:text-6xl font-bold mb-6"
+          <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.3 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full mb-8"
+          >
+            <Gift className="w-10 h-10 text-white" />
+          </motion.div>
+          
+          <motion.h1 
+            className="text-5xl md:text-7xl font-bold mb-8"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, delay: 0.4 }}
           >
             <motion.span 
               className="coffee-gradient"
               initial={{ opacity: 0, y: -30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
             >
-              Buy Me
-            </motion.span> Coffee
+              Support
+            </motion.span> My Work
           </motion.h1>
+          
           <motion.p 
-            className="text-xl text-slate-300 max-w-2xl mx-auto"
+            className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.9 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
           >
-            If you found my work helpful or inspiring, consider supporting me with a coffee! ☕
+            If my projects, insights, or contributions have been valuable to you, consider supporting my continued work and innovation in technology.
           </motion.p>
+          
           <motion.div 
-            className="w-24 h-1 bg-gradient-to-r from-amber-500 to-orange-500 mx-auto rounded-full mt-6"
+            className="w-32 h-1 bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 mx-auto rounded-full mt-8"
             initial={{ width: 0, opacity: 0 }}
-            animate={{ width: "6rem", opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1.1 }}
+            animate={{ width: "8rem", opacity: 1 }}
+            transition={{ duration: 0.8, delay: 1.0 }}
           />
         </motion.div>
 
         {/* Main Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* QR Code Section */}
           <motion.div
             ref={ref}
@@ -87,38 +98,40 @@ const BuyMeCoffee = ({ setCurrentPage }: BuyMeCoffeeProps) => {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <div className="glass-card p-8">
-              <div className="mb-6">
-                <Coffee className="w-12 h-12 mx-auto mb-4 text-amber-500" />
-                <h2 className="text-2xl font-bold mb-2 coffee-gradient">Scan QR Code</h2>
-                <p className="text-slate-300">Use any UPI app to scan and pay</p>
+            <div className="glass-card p-10">
+              <div className="mb-8">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full mb-6">
+                  <Coffee className="w-8 h-8 text-white" />
+                </div>
+                <h2 className="text-3xl font-bold mb-4 coffee-gradient">Quick Payment</h2>
+                <p className="text-slate-300 text-lg">Scan with any UPI-enabled app</p>
               </div>
               
               <div className="relative inline-block">
                 <motion.img
                   src="/qr-code.jpg"
                   alt="UPI QR Code"
-                  className="w-64 h-64 mx-auto rounded-lg shadow-2xl"
-                  whileHover={{ scale: 1.05 }}
+                  className="w-72 h-72 mx-auto rounded-2xl shadow-2xl border-4 border-white/10"
+                  whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.3 }}
                 />
                 <motion.div
                   animate={{ 
-                    scale: [1, 1.1, 1],
-                    opacity: [0.7, 1, 0.7]
+                    scale: [1, 1.05, 1],
+                    opacity: [0.3, 0.6, 0.3]
                   }}
                   transition={{ 
-                    duration: 2,
+                    duration: 3,
                     repeat: Infinity,
                     ease: "easeInOut"
                   }}
-                  className="absolute inset-0 border-2 border-amber-500 rounded-lg"
+                  className="absolute inset-0 border-2 border-amber-400/50 rounded-2xl"
                 />
               </div>
             </div>
           </motion.div>
 
-          {/* UPI Details Section */}
+          {/* Payment Details Section */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -132,19 +145,22 @@ const BuyMeCoffee = ({ setCurrentPage }: BuyMeCoffeeProps) => {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="glass-card p-8"
             >
-              <h3 className="text-xl font-bold mb-4 coffee-gradient">UPI ID</h3>
-              <div className="flex items-center justify-between p-4 bg-slate-800/50 rounded-lg border border-slate-700">
-                <span className="text-lg font-mono text-slate-300">{upiId}</span>
+              <div className="flex items-center mb-6">
+                <Sparkles className="w-6 h-6 text-amber-400 mr-3" />
+                <h3 className="text-2xl font-bold coffee-gradient">UPI ID</h3>
+              </div>
+              <div className="flex items-center justify-between p-6 bg-slate-800/50 rounded-xl border border-slate-700">
+                <span className="text-xl font-mono text-slate-200">{upiId}</span>
                 <motion.button
                   onClick={handleCopyUPI}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="p-2 rounded-full bg-amber-500/20 hover:bg-amber-500/30 transition-colors duration-300"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="p-3 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 transition-all duration-300 shadow-lg"
                 >
                   {copied ? (
-                    <Check className="w-5 h-5 text-green-400" />
+                    <Check className="w-5 h-5 text-white" />
                   ) : (
-                    <Copy className="w-5 h-5" />
+                    <Copy className="w-5 h-5 text-white" />
                   )}
                 </motion.button>
               </div>
@@ -152,8 +168,9 @@ const BuyMeCoffee = ({ setCurrentPage }: BuyMeCoffeeProps) => {
                 <motion.p
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="text-green-400 text-sm mt-2"
+                  className="text-green-400 text-sm mt-3 flex items-center"
                 >
+                  <Check className="w-4 h-4 mr-2" />
                   UPI ID copied to clipboard!
                 </motion.p>
               )}
@@ -166,34 +183,45 @@ const BuyMeCoffee = ({ setCurrentPage }: BuyMeCoffeeProps) => {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="glass-card p-8"
             >
-              <h3 className="text-xl font-bold mb-4 coffee-gradient">How to Pay</h3>
-              <div className="space-y-4">
+              <h3 className="text-2xl font-bold mb-6 coffee-gradient">Payment Steps</h3>
+              <div className="space-y-6">
                 <div className="flex items-start">
-                  <div className="w-6 h-6 rounded-full bg-amber-500 text-white text-sm flex items-center justify-center mr-3 mt-0.5">1</div>
-                  <p className="text-slate-300">Open any UPI app (Google Pay, PhonePe, Paytm, etc.)</p>
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-semibold flex items-center justify-center mr-4 mt-1">1</div>
+                  <div>
+                    <p className="text-slate-200 font-medium mb-1">Open Payment App</p>
+                    <p className="text-slate-400">Launch Google Pay, PhonePe, Paytm, or any UPI app</p>
+                  </div>
                 </div>
                 <div className="flex items-start">
-                  <div className="w-6 h-6 rounded-full bg-amber-500 text-white text-sm flex items-center justify-center mr-3 mt-0.5">2</div>
-                  <p className="text-slate-300">Scan the QR code or enter the UPI ID manually</p>
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-semibold flex items-center justify-center mr-4 mt-1">2</div>
+                  <div>
+                    <p className="text-slate-200 font-medium mb-1">Scan or Enter</p>
+                    <p className="text-slate-400">Scan the QR code or manually enter the UPI ID</p>
+                  </div>
                 </div>
                 <div className="flex items-start">
-                  <div className="w-6 h-6 rounded-full bg-amber-500 text-white text-sm flex items-center justify-center mr-3 mt-0.5">3</div>
-                  <p className="text-slate-300">Enter the amount and complete the payment</p>
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-semibold flex items-center justify-center mr-4 mt-1">3</div>
+                  <div>
+                    <p className="text-slate-200 font-medium mb-1">Complete Payment</p>
+                    <p className="text-slate-400">Enter amount and confirm the transaction</p>
+                  </div>
                 </div>
               </div>
             </motion.div>
 
-            {/* Thank You Message */}
+            {/* Appreciation Message */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.8 }}
               className="glass-card p-8 text-center"
             >
-              <Heart className="w-8 h-8 mx-auto mb-4 text-red-500" />
-              <h3 className="text-lg font-semibold mb-2 coffee-gradient">Thank You!</h3>
-              <p className="text-slate-300">
-                Your support means the world to me and helps me continue creating amazing projects and content.
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-red-500 to-pink-500 rounded-full mb-6">
+                <Heart className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-semibold mb-4 coffee-gradient">Thank You</h3>
+              <p className="text-slate-300 leading-relaxed">
+                Your support enables me to continue creating innovative solutions, sharing knowledge, and contributing to the tech community.
               </p>
             </motion.div>
           </motion.div>
@@ -204,20 +232,20 @@ const BuyMeCoffee = ({ setCurrentPage }: BuyMeCoffeeProps) => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.0 }}
-          className="text-center mt-16"
+          className="text-center mt-20"
         >
-          <div className="glass-card p-8 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold mb-4 coffee-gradient">Want to Connect?</h3>
-            <p className="text-slate-300 mb-6">
-              Let's discuss projects, collaborate, or just have a chat about technology!
+          <div className="glass-card p-10 max-w-3xl mx-auto">
+            <h3 className="text-3xl font-bold mb-6 coffee-gradient">Let's Collaborate</h3>
+            <p className="text-slate-300 mb-8 text-lg leading-relaxed">
+              Beyond support, I'm always excited to discuss new projects, share insights, or explore opportunities to work together on innovative solutions.
             </p>
             <motion.button
               onClick={handleGetInTouch}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full text-white font-medium hover:bg-gradient-to-r hover:from-pink-400 hover:to-orange-400 hover:shadow-lg hover:shadow-pink-400/25 transition-all duration-500 ease-out"
+              className="px-10 py-4 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full text-white font-semibold text-lg hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-600 hover:shadow-xl hover:shadow-blue-500/25 transition-all duration-500 ease-out"
             >
-              Get In Touch
+              Start a Conversation
             </motion.button>
           </div>
         </motion.div>

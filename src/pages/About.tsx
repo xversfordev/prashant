@@ -72,8 +72,7 @@ const About = ({ setCurrentPage }: AboutProps) => {
   const achievements = [
     { icon: Award, value: "5+", label: "ML Models Delivered", color: "from-purple-500 to-pink-500" },
     { icon: TrendingUp, value: "10+GB", label: "Daily Data Processed", color: "from-blue-500 to-cyan-500" },
-    { icon: Zap, value: "60%", label: "Latency Reduction", color: "from-green-500 to-emerald-500" },
-    { icon: Users, value: "100+", label: "Team Members Led", color: "from-orange-500 to-red-500" }
+    { icon: Zap, value: "60%", label: "Latency Reduction", color: "from-green-500 to-emerald-500" }
   ]
 
   const dynamicTitles = [
@@ -120,7 +119,7 @@ const About = ({ setCurrentPage }: AboutProps) => {
           <motion.div
             animate={{ scale: [1, 1.2, 1] }}
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            className="w-8 h-8 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full opacity-60"
+            className="w-8 h-8 bg-gradient-to-r from-[#14b8a6] to-[#06b6d4] rounded-full opacity-60"
           />
         </motion.div>
 
@@ -137,7 +136,7 @@ const About = ({ setCurrentPage }: AboutProps) => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="inline-block mb-6"
           >
-            <div className="w-24 h-24 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="w-24 h-24 bg-gradient-to-r from-[#14b8a6] to-[#06b6d4] rounded-full flex items-center justify-center mx-auto mb-4">
               <Users className="w-12 h-12 text-white" />
             </div>
           </motion.div>
@@ -170,7 +169,7 @@ const About = ({ setCurrentPage }: AboutProps) => {
           </motion.p>
           
           <motion.div 
-            className="w-32 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full mt-8"
+            className="w-32 h-1 bg-gradient-to-r from-[#14b8a6] to-[#06b6d4] mx-auto rounded-full mt-8"
             initial={{ width: 0, opacity: 0 }}
             animate={{ width: "8rem", opacity: 1 }}
             transition={{ duration: 0.8, delay: 1.1 }}
@@ -185,7 +184,7 @@ const About = ({ setCurrentPage }: AboutProps) => {
           className="glass-card p-10 mb-20 relative overflow-hidden"
         >
           <motion.div
-            className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-full -translate-y-16 translate-x-16"
+            className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#14b8a6]/10 via-[#06b6d4]/10 to-[#14b8a6]/10 rounded-full -translate-y-16 translate-x-16"
             animate={{ rotate: 360 }}
             transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
           />
@@ -226,7 +225,7 @@ const About = ({ setCurrentPage }: AboutProps) => {
                 className="space-y-4"
               >
                 <div className="flex items-center p-4 bg-white/5 rounded-lg border border-white/10">
-                  <Target className="w-6 h-6 text-purple-400 mr-3" />
+                  <Target className="w-6 h-6 text-[#14b8a6] mr-3" />
                   <div>
                     <div className="font-semibold text-white">Problem Solver</div>
                     <div className="text-sm text-slate-400">Complex challenges, elegant solutions</div>
@@ -234,7 +233,7 @@ const About = ({ setCurrentPage }: AboutProps) => {
                 </div>
                 
                 <div className="flex items-center p-4 bg-white/5 rounded-lg border border-white/10">
-                  <Zap className="w-6 h-6 text-pink-400 mr-3" />
+                  <Zap className="w-6 h-6 text-[#06b6d4] mr-3" />
                   <div>
                     <div className="font-semibold text-white">Performance Focused</div>
                     <div className="text-sm text-slate-400">Optimized for scale and speed</div>
@@ -242,7 +241,7 @@ const About = ({ setCurrentPage }: AboutProps) => {
                 </div>
                 
                 <div className="flex items-center p-4 bg-white/5 rounded-lg border border-white/10">
-                  <Users className="w-6 h-6 text-purple-400 mr-3" />
+                  <Users className="w-6 h-6 text-[#14b8a6] mr-3" />
                   <div>
                     <div className="font-semibold text-white">Team Player</div>
                     <div className="text-sm text-slate-400">Collaborative leadership approach</div>
@@ -266,7 +265,7 @@ const About = ({ setCurrentPage }: AboutProps) => {
               key={currentTitleIndex}
               className="text-4xl font-bold inline-block"
               style={{
-                background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+                background: 'linear-gradient(135deg, #14b8a6 0%, #06b6d4 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text'
@@ -375,7 +374,7 @@ const About = ({ setCurrentPage }: AboutProps) => {
             Key Achievements
           </motion.h2>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {achievements.map((achievement, index) => {
               const Icon = achievement.icon
               return (

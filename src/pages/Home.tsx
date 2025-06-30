@@ -4,6 +4,7 @@ import { Download, Github, Linkedin, Coffee } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
 import AnimatedBackground from '../components/AnimatedBackground'
+import ReactDOM from 'react-dom'
 
 interface HomeProps {
   setCurrentPage: (page: string) => void
@@ -63,6 +64,45 @@ const InteractiveButton = ({
     </motion.button>
   )
 }
+
+// ISAStatCard: Floating stat card for the ISA symbol with expand-on-hover
+const ISAStatCard = () => {
+  const message = `Orthopedically challenged, but driven by grit and skill. My disability doesn't define me—I strive to create meaningful impact.`;
+  const card = (
+    <div className="fixed left-10 bottom-28 z-[9999] flex items-center group cursor-pointer">
+      <div className="glass-card flex items-center justify-center h-16 w-16 p-0 rounded-2xl border border-blue-200/40 shadow-2xl backdrop-blur-md bg-white/10 relative overflow-visible">
+        {/* Glow effect */}
+        <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500 via-blue-400 to-purple-500 opacity-0 group-hover:opacity-40 blur-lg transition-all duration-300 pointer-events-none z-0" />
+        <div className="flex items-center justify-center w-12 h-12 bg-blue-600/80 text-white rounded-full z-10">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 32 32"
+            width="28"
+            height="28"
+            fill="currentColor"
+            aria-label="International Symbol of Access"
+          >
+            <circle cx="16" cy="16" r="16" fill="#2563eb" />
+            <path d="M16 7.5a2.25 2.25 0 1 1 0 4.5a2.25 2.25 0 0 1 0-4.5zm-3.5 6.25a1 1 0 0 1 1-1h5a1 1 0 1 1 0 2h-4.1l.5 2h3.6a1 1 0 1 1 0 2h-3l.7 2.8a3 3 0 1 0 2.8-1.8a1 1 0 1 1 0-2a5 5 0 1 1-4.7 3.2a1 1 0 0 1 1.9-.6a3 3 0 1 0 2.8-1.8a1 1 0 1 1 0-2a5 5 0 1 1-4.7 3.2a1 1 0 0 1 1.9-.6z" fill="#fff" />
+          </svg>
+        </div>
+      </div>
+      <div
+        className="ml-2 min-w-[220px] max-w-xs px-6 py-5 rounded-2xl border-l-4 border-blue-500 shadow-2xl bg-white/20 backdrop-blur-2xl border border-white/20 dark:bg-slate-900/40 text-gray-900 dark:text-white text-base font-mono transition-all duration-300 opacity-0 translate-x-0 pointer-events-none group-hover:pointer-events-auto group-hover:opacity-100 group-hover:translate-x-2 flex items-start gap-3"
+        style={{ boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)', zIndex: 9999 }}
+      >
+        <span className="mt-1 text-blue-500">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 18v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2m16-10-4 4m0 0-4-4m4 4V4"/></svg>
+        </span>
+        <span className="block">
+          <span className="block text-blue-700 dark:text-blue-300 font-semibold mb-1 font-sans">♿ About Me</span>
+          <span className="text-gray-800 dark:text-gray-100 leading-relaxed text-sm font-mono">{message}</span>
+        </span>
+      </div>
+    </div>
+  );
+  return typeof window !== 'undefined' ? ReactDOM.createPortal(card, document.body) : null;
+};
 
 const Home = ({ setCurrentPage }: HomeProps) => {
   const navigate = useNavigate()
@@ -144,7 +184,7 @@ const Home = ({ setCurrentPage }: HomeProps) => {
       <AnimatedBackground type="home" />
       
       {/* Main Content */}
-      <div className="relative z-10 text-center px-6 flex flex-col items-center justify-center min-h-screen">
+      <div className="relative z-10 text-center px-6 flex flex-col items-center justify-center">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -316,6 +356,15 @@ const Home = ({ setCurrentPage }: HomeProps) => {
           <div className="text-3xl font-bold home-gradient">60%</div>
           <div className="text-sm text-gray-300">Latency Reduction</div>
         </div>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.2, duration: 0.8 }}
+        className="w-full flex justify-center my-8"
+      >
+        <ISAStatCard />
       </motion.div>
     </div>
   )
